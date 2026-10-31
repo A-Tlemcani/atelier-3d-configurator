@@ -35,7 +35,7 @@ export function createStage(canvas: HTMLCanvasElement, opts: { fov?: number; alp
   const camera = new THREE.PerspectiveCamera(opts.fov ?? 40, 1, 0.1, 200);
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const callbacks: Array<(t: number, dt: number) => void> = [];
-  const clock = new THREE.Clock();
+  const timer = new THREE.Timer();
   let visible = true;
   let running = false;
 
@@ -50,15 +50,16 @@ export function createStage(canvas: HTMLCanvasElement, opts: { fov?: number; alp
   const ro = new ResizeObserver(resize);
   ro.observe(canvas.parentElement ?? canvas);
 
-  const frame = () => {
-    const dt = Math.min(clock.getDelta(), 0.05);
-    const t = clock.elapsedTime;
+  const frame = (now: number) => {
+    timer.update(now);
+    const dt = Math.min(timer.getDelta(), 0.05);
+    const t = timer.getElapsed();
     for (const cb of callbacks) cb(t, dt);
     renderer.render(scene, camera);
   };
   const sync = () => {
     const shouldRun = visible && !document.hidden;
-    if (shouldRun && !running) { clock.getDelta(); renderer.setAnimationLoop(frame); }
+    if (shouldRun && !running) { timer.reset(); renderer.setAnimationLoop(frame); }
     if (!shouldRun && running) renderer.setAnimationLoop(null);
     running = shouldRun;
   };
