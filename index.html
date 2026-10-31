@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Fjord Lounge Chair: configure yours in 3D · Atelier Nord</title>
+    <meta name="description" content="Design your Fjord lounge chair in real-time 3D: choose the wood, the upholstery and the legs, see the price update live, share your configuration and order." />
+    <meta name="theme-color" content="#efebe4" />
+    <link rel="canonical" href="https://abdeltl.github.io/atelier-3d-configurator/" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content="Fjord Lounge Chair: configure yours in 3D" />
+    <meta property="og:type" content="product" />
+    <script type="application/ld+json">
+      { "@context": "https://schema.org", "@type": "Product", "name": "Fjord Lounge Chair", "brand": { "@type": "Brand", "name": "Atelier Nord" }, "description": "Solid-wood lounge chair, configurable in 3D (demo product).", "offers": { "@type": "AggregateOffer", "priceCurrency": "EUR", "lowPrice": "1290", "highPrice": "2130", "availability": "https://schema.org/PreOrder" } }
+    </script>
+  </head>
+  <body>
+    <p class="demo-banner">Concept demo by <a href="https://abdeltl.github.io/" target="_blank" rel="noopener noreferrer">Abderrahman Tlemcani</a>: fictional brand, no real orders.</p>
+    <header class="nav">
+      <a class="logo" href="#">ATELIER<span>NORD</span></a>
+      <nav aria-label="Primary"><a href="#configurator">Lounge</a><a href="#details">Details</a><a href="#craft">Craft</a></nav>
+      <button class="cart-btn" id="open-cart" type="button" aria-haspopup="dialog">Cart <span class="badge" id="cart-count">0</span></button>
+    </header>
+    <main>
+      <section class="configurator" id="configurator">
+        <div class="stage" data-webgl>
+          <canvas id="chair" role="img" aria-label="3D preview of your configured chair. Drag to rotate."></canvas>
+          <div class="views" role="group" aria-label="Camera views">
+            <button type="button" data-view="three-quarter" aria-pressed="true">¾</button>
+            <button type="button" data-view="front" aria-pressed="false">Front</button>
+            <button type="button" data-view="side" aria-pressed="false">Side</button>
+            <button type="button" data-view="detail" aria-pressed="false">Detail</button>
+          </div>
+          <p class="stage-hint">Drag to rotate · Pinch or scroll to zoom</p>
+          <p class="fallback">3D preview isn't available on this device; your selections still apply.</p>
+        </div>
+        <aside class="panel">
+          <p class="eyebrow">Lounge collection · Made in Jura, France</p>
+          <h1>Fjord Lounge Chair</h1>
+          <p class="desc">Solid hardwood frame, deep foam cushions, hand-finished in our workshop. Configure it your way.</p>
+          <form id="options" class="options"></form>
+          <div class="buy">
+            <div class="price-row">
+              <p class="price" id="price" aria-live="polite">€1,290</p>
+              <p class="lead-time">Ships in 6–8 weeks · Free delivery in France</p>
+            </div>
+            <div class="buy-actions">
+              <button type="button" class="btn btn-dark" id="add">Add to cart</button>
+              <button type="button" class="btn btn-line" id="share" aria-describedby="share-status">Share</button>
+            </div>
+            <p class="share-status" id="share-status" role="status"></p>
+            <p class="sku" id="sku"></p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="details" id="details">
+        <div><h2>Dimensions</h2><dl><div><dt>Width</dt><dd>92 cm</dd></div><div><dt>Depth</dt><dd>86 cm</dd></div><div><dt>Height</dt><dd>78 cm</dd></div><div><dt>Seat height</dt><dd>42 cm</dd></div></dl></div>
+        <div><h2>Materials</h2><p>FSC-certified solid hardwood, high-resilience foam with feather topper, removable covers. Leather is vegetable-tanned in Italy.</p></div>
+        <div id="craft"><h2>Craft</h2><p>Every chair is built to order by a team of six cabinet-makers. We use no veneer and no staples, and give a 10-year frame warranty.</p></div>
+      </section>
+    </main>
+    <footer class="footer"><p>Atelier Nord (fictional brand) · Design & development: <a href="https://abdeltl.github.io/" target="_blank" rel="noopener noreferrer">Abderrahman Tlemcani</a></p></footer>
+
+    <dialog class="drawer" id="cart" aria-labelledby="cart-title">
+      <div class="drawer-inner">
+        <header><h2 id="cart-title">Your cart</h2><button type="button" class="close" id="close-cart" aria-label="Close cart">✕</button></header>
+        <ul id="cart-lines" class="cart-lines"></ul>
+        <footer class="cart-foot">
+          <p class="subtotal"><span>Subtotal</span><strong id="cart-total">€0</strong></p>
+          <button type="button" class="btn btn-dark btn-block" id="checkout">Checkout</button>
+          <p class="note" id="checkout-note">Demo store: checkout is disabled.</p>
+        </footer>
+      </div>
+    </dialog>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
