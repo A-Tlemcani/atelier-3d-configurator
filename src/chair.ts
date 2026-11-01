@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { HDRLoader } from 'three/examples/jsm/loaders/HDRLoader.js';
 import { createStage } from './lib/stage';
 import { option, type Config } from './config';
 
@@ -55,6 +56,12 @@ export function initChair(canvas: HTMLCanvasElement, initial: Config) {
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
   scene.environmentIntensity = 0.7;
   pmrem.dispose();
+  // Upgrade to a real photo-studio capture (Poly Haven, CC0) once it arrives; the synthetic room covers the wait.
+  new HDRLoader().load('./studio_small_09_1k.hdr', (hdr) => {
+    hdr.mapping = THREE.EquirectangularReflectionMapping;
+    scene.environment = hdr;
+    scene.environmentIntensity = 0.9;
+  });
 
   camera.position.set(...views['three-quarter'].pos);
   const controls = new OrbitControls(camera, canvas);
@@ -120,9 +127,9 @@ export function initChair(canvas: HTMLCanvasElement, initial: Config) {
     target.legs.set(legOpt.id === 'wood' ? frame.color : legOpt.color);
     const leather = fabric.kind === 'leather';
     fabricMat.map = leather ? null : cloth;
-    fabricMat.roughness = leather ? 0.42 : 0.95;
+    fabricMat.roughness = leather ? 0.5 : 0.95;
     fabricMat.sheen = leather ? 0 : 1;
-    fabricMat.clearcoat = leather ? 0.35 : 0;
+    fabricMat.clearcoat = leather ? 0.15 : 0;
     fabricMat.needsUpdate = true;
     const metal = legOpt.kind === 'metal';
     legMat.map = metal ? null : grain;
