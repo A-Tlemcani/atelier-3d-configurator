@@ -3,7 +3,7 @@
 E-commerce 3D product configurator: live materials, pricing, shareable configurations and cart.
 
 ## Stack
-Vite 8 + TypeScript (strict) + Three.js, no framework. Static build in `dist/`, deployed by `.github/workflows/deploy.yml` to GitHub Pages (https://abdeltl.github.io/atelier-3d-configurator/).
+Vite 8 + TypeScript (strict) + Three.js, no framework. Static build in `dist/`, deployed by `.github/workflows/deploy.yml` to GitHub Pages (https://a-tlemcani.github.io/atelier-3d-configurator/).
 
 ## Commands
 - `npm ci --ignore-scripts` – install (lockfile is the source of truth)

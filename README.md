@@ -2,9 +2,9 @@
 
 An e-commerce product page where customers configure a lounge chair in real-time 3D (wood, upholstery, legs, headrest), see the price update, share the exact configuration by link, and add it to a persistent cart.
 
-**Live demo → [https://abdeltl.github.io/atelier-3d-configurator/](https://abdeltl.github.io/atelier-3d-configurator/)**
+**Live demo → [https://a-tlemcani.github.io/atelier-3d-configurator/](https://a-tlemcani.github.io/atelier-3d-configurator/)**
 
-![Screenshot](https://abdeltl.github.io/work/atelier-3d-configurator.jpg)
+![Screenshot](https://a-tlemcani.github.io/work/atelier-3d-configurator.jpg)
 
 ## Highlights
 - Procedural chair built from `RoundedBoxGeometry`, with **canvas-generated wood grain and fabric weave** textures tinted per option and PBR variants for leather, brass and steel
@@ -33,4 +33,4 @@ npm run build    # typecheck + production build in dist/
 Every push to `main` builds and deploys to GitHub Pages via `.github/workflows/deploy.yml` (Settings → Pages → Source: *GitHub Actions*).
 
 ---
-Designed & developed by [Abderrahman Tlemcani](https://abdeltl.github.io/). The brand in this demo is fictional.
+Designed & developed by [Abderrahman Tlemcani](https://a-tlemcani.github.io/). The brand in this demo is fictional.

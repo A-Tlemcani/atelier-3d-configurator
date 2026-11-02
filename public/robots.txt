@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://abdeltl.github.io/atelier-3d-configurator/sitemap.xml
+Sitemap: https://a-tlemcani.github.io/atelier-3d-configurator/sitemap.xml
